@@ -58,7 +58,7 @@ Accuracy plateaued at **400 epochs (69%)** — further training showed no improv
 
 ### Application Demo
 
-![GUI demo](results/gui_screenshots/demo.png)
+![GUI demo](results/gui_screenshot1.png) ![GUI demo](results/gui_screenshot2.png)
 
 Users can upload an image, view the predicted expression with confidence percentage and prediction time, and see a full percentage breakdown across all 7 expressions.
 
