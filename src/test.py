@@ -15,24 +15,6 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
 
-# def plot_confusion_matrix(cm, class_names):
-#     """Plot the confusion matrix."""
-#     # Calculate percentage
-#     cm_percentage = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis] * 100
-#     cm_percentage = np.round(cm_percentage, 1)  # Round to 1 decimal place
-    
-#     # Create formatted annotations with percentage symbol
-#     annotations = np.core.defchararray.add(cm_percentage.astype(str), '%')
-    
-#     plt.figure(figsize=(10, 8))
-#     sns.heatmap(cm_percentage, annot=annotations, fmt='', cmap='Blues', xticklabels=class_names, yticklabels=class_names)
-#     plt.title('Confusion Matrix',fontsize=14)
-#     plt.ylabel('Actual', fontsize=13)
-#     plt.xlabel('Predicted', fontsize=13)
-#     plt.tight_layout()
-#     plt.savefig('confusion_matrix32-400.png')
-#     plt.show()
-
 def plot_confusion_matrix(cm, class_names):
     """Plot the confusion matrix with both raw values and percentage annotations."""
     # Calculate percentage
@@ -63,6 +45,16 @@ def plot_confusion_matrix(cm, class_names):
     plt.savefig('confusion_matrix32-400.png')
     plt.show()
 
+def save_classification_report(true_classes, predicted_classes, class_labels):
+    """Compute and save the precision/recall/F1 classification report as plain text."""
+ 
+    report = classification_report(true_classes, predicted_classes, target_names=class_labels)
+    with open('classification_report.txt', 'w') as f:
+        f.write(report)
+ 
+    print("Classification report saved to classification_report.txt")
+    return report
+
 
 def evaluate_model():
     """Load and evaluate the trained model."""
@@ -79,17 +71,6 @@ def evaluate_model():
         color_mode="grayscale",
         class_mode='categorical',
         shuffle=False)
-    
-    # '''VGG16'''
-    # # Prepare test data generator
-    # test_datagen = ImageDataGenerator(rescale=1. / 255)
-    # test_generator = test_datagen.flow_from_directory(
-    # test_dir,
-    # target_size=(224, 224),  # Resize to 224x224
-    # batch_size=batch_size,
-    # color_mode="rgb",  # Use RGB images
-    # class_mode='categorical',
-    # shuffle=False)
 
     # Load the trained model
     model = load_model('emotion_recognition_model32-400.keras')
@@ -101,10 +82,13 @@ def evaluate_model():
     true_classes = test_generator.classes
     class_labels = list(test_generator.class_indices.keys())
 
-    # Confusion matrix and classification report
+    # Confusion matrix
     cm = confusion_matrix(true_classes, predicted_classes)
     print("Confusion Matrix:\n", cm)
-    print("\nClassification Report:\n", classification_report(true_classes, predicted_classes, target_names=class_labels))
+    
+    # Classification report (precision, recall, F1-score per class)
+    report = save_classification_report(true_classes, predicted_classes, class_labels)
+    print("\nClassification Report:\n", report)
 
     # Plot confusion matrix
     plot_confusion_matrix(cm, class_labels)
