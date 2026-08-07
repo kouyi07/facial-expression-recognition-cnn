@@ -66,16 +66,17 @@ Users can upload an image, view the predicted expression with confidence percent
 
 ```
 ├── src/
-│   ├── train.py               # Model architecture + training loop
-│   ├── test.py                # Model evaluation + confusion matrix
-│   ├── result_batch_size.py   # Batch size vs accuracy/time plots
-│   └── result_epochs.py       # Epochs vs accuracy/time plots
+│   ├── train.py                                  # Model architecture + training loop
+│   ├── test.py                                   # Model evaluation + confusion matrix
+│   ├── result_batch_size.py                      # Batch size vs accuracy/time plots
+│   └── result_epochs.py                          # Epochs vs accuracy/time plots
 ├── app/
-│   ├── app.py                 # Tkinter GUI application
-│   └── webcam_demo.py         # Real-time webcam facial expression recognition
-├── results/                   # Generated plots and screenshots
+│   ├── app.py                                    # Tkinter GUI application
+│   ├── webcam_demo.py                            # Real-time webcam facial expression recognition
+│   └── haarcascade_frontalface_default.xml       # Pre-trained Haar cascade for webcam_demo.py
+├── results/                                      # Generated plots and screenshots
 ├── docs/
-│   └── EKST_paper.pdf         # Published research paper
+│   └── EKST_paper.pdf                            # Published research paper
 └── requirements.txt
 ```
 
