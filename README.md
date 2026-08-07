@@ -107,7 +107,7 @@ python src/test.py
 python app/app.py
 ```
 
-Note: the pretrained model file (`emotion_recognition_model32-400.keras`) is not included in this repo due to file size. [Add your download link here if hosted externally, e.g. Google Drive/HuggingFace.]
+Note: the pretrained model file (`emotion_recognition_model32-400.keras`) is not included in this repo due to file size. [https://drive.google.com/file/d/1GGz7-liB-KFjVIDVYHjGnro0Hx3-GCLo/view?usp=sharing]
 
 ## Key Findings
 
