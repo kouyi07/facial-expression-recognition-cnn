@@ -72,7 +72,7 @@ Users can upload an image, view the predicted expression with confidence percent
 │   └── result_epochs.py       # Epochs vs accuracy/time plots
 ├── app/
 │   ├── app.py                 # Tkinter GUI application
-│   └── webcam_demo.py                 # Real-time webcam facial expression recognition
+│   └── webcam_demo.py         # Real-time webcam facial expression recognition
 ├── results/                   # Generated plots and screenshots
 ├── docs/
 │   └── EKST_paper.pdf         # Published research paper
