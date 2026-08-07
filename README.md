@@ -66,12 +66,13 @@ Users can upload an image, view the predicted expression with confidence percent
 
 ```
 ├── src/
-│   ├── train.py              # Model architecture + training loop
+│   ├── train.py               # Model architecture + training loop
 │   ├── test.py                # Model evaluation + confusion matrix
 │   ├── result_batch_size.py   # Batch size vs accuracy/time plots
 │   └── result_epochs.py       # Epochs vs accuracy/time plots
 ├── app/
-│   └── app.py                 # Tkinter GUI application
+│   ├── app.py                 # Tkinter GUI application
+│   └── webcam_demo.py                 # Real-time webcam facial expression recognition
 ├── results/                   # Generated plots and screenshots
 ├── docs/
 │   └── EKST_paper.pdf         # Published research paper
